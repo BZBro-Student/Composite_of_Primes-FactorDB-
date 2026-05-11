@@ -9,6 +9,7 @@ def main():
     try:
         while 1:
             results = master.SendBatchMulti(hostNames)
+            print(results)
             if results:
                 master.processResults(results)
                 count = master.resultCount
@@ -16,6 +17,7 @@ def main():
             else:
                 continue
     except KeyboardInterrupt:
+        count = master.resultCount()
         print("Count: " + str(count))
     except Exception as e:
         print(f"\nError encountered: {e}")
