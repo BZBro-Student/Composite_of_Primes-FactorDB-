@@ -1,3 +1,4 @@
+import Master
 def main():
     digit = 99
     batchSize = 1000
