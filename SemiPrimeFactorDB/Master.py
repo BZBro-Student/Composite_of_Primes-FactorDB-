@@ -37,14 +37,15 @@ class Master:
             futures = {executor.submit(self.SendBatch, host): host for host in HostNames}
         
         for future in futures:
-            currHost = hosts[future]
+            currHost = futures[future]
             try:
                 returnData = future.result()
                 if returnData:
                     for lines in returnData.splitlines():
-                        results.append(lines.split(","))
+                        if lines.strip():
+                            results.append(lines.split(","))
             except Exception as e:
-                print(f"Error on {host}: {e}")
+                print(f"Error on {future}: {e}")
                 continue
         return results
 
