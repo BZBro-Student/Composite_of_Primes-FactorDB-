@@ -17,7 +17,7 @@ def main():
             else:
                 continue
     except KeyboardInterrupt:
-        count = master.resultCount()
+        count = master.resultCount
         print("Count: " + str(count))
     except Exception as e:
         print(f"\nError encountered: {e}")
