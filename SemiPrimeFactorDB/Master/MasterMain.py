@@ -1,5 +1,4 @@
 from Master import Master
-from PrimeBatchGenerator import PrimeBatchGenerator
 def main():
     digit = 99
     batchSize = 1000

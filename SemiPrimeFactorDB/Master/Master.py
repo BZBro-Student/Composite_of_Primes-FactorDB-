@@ -4,6 +4,7 @@ import requests
 from contextlib import redirect_stdout
 from concurrent.futures import ThreadPoolExecutor
 from factordb.factordb import FactorDB
+from PrimeBatchGenerator import PrimeBatchGenerator
 class Master:
     def __init__(self, HostNames, digit, batchSize):
         self.HostNames = HostNames
