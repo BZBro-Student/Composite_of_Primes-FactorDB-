@@ -4,7 +4,7 @@ def main():
     batchSize = 5
     hostNames = ["bzbro@bropiSL1.local","bzbro@bropiSL2.local","bzbro@bropiSL2.local"]
     master = Master(hostNames, digit, batchSize)
-    out = master.SendBatch(hostNames[0])
+    out = master.SendBatchMulti(hostNames)
     print(out)
 
 
