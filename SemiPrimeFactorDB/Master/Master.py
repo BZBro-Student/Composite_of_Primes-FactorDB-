@@ -19,7 +19,7 @@ class Master:
         dataStr = "\n".join(data)
 
         try:
-            send = subprocess.Popen(['ssh', host, 'python3 -u minion.py'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,text= True)
+            send = subprocess.Popen(['ssh', host, 'python3 -u Minion.py'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,text= True)
             stdout, stderr = send.communicate(input=dataStr)
 
             if send.returncode != 0:
