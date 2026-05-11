@@ -1,8 +1,8 @@
 from Master import Master
 import time
 def main():
-    digit = 20
-    batchSize = 5
+    digit = 99
+    batchSize = 1000
     hostNames = ["bzbro@bropiSL1.local","bzbro@bropiSL2.local","bzbro@bropiSL3.local"]
     master = Master(hostNames, digit, batchSize)
     count = 0
