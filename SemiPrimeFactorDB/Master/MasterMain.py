@@ -1,11 +1,25 @@
 from Master import Master
+import time
 def main():
     digit = 20
     batchSize = 5
-    hostNames = ["bzbro@bropiSL1.local","bzbro@bropiSL2.local","bzbro@bropiSL2.local"]
+    hostNames = ["bzbro@bropiSL1.local","bzbro@bropiSL2.local","bzbro@bropiSL3.local"]
     master = Master(hostNames, digit, batchSize)
-    out = master.SendBatchMulti(hostNames)
-    print(out)
+    count = 0
+    try:
+        while 1:
+            results = master.SendBatchMulti(hostNames)
+            if results:
+                master.processResults(results)
+                count = master.resultCount
+            else:
+                continue
+    except KeyboardInterrupt:
+        print("Count: " + str(count))
+    except Exception as e:
+        print(f"\nError encountered: {e}")
+        time.sleep(10)     
+
 
 
 if __name__ == "__main__":
