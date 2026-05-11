@@ -12,6 +12,7 @@ def main():
             if results:
                 master.processResults(results)
                 count = master.resultCount
+                print(count)
             else:
                 continue
     except KeyboardInterrupt:
