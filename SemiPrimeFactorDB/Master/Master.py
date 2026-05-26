@@ -1,4 +1,5 @@
 import subprocess
+import time
 import sys
 import requests
 from contextlib import redirect_stdout
@@ -59,17 +60,21 @@ class Master:
                 self.resultCount = self.resultCount + 1
                 return True
         except Exception as e:
-            pass
+            return False
 
     def processResults(self,results):
         for row in results:
-            primeP, primeQ, result = row
-            currSemiPrime = FactorDB(result)
-            currSemiPrime.connect()
-            status = currSemiPrime.get_status()
-            if (status == 'C' or status == 'U'):
-                string = f"{result}={primeP}*{primeQ}"
-                self.reportResults(string)
+            try:
+                time.sleep(.5)
+                primeP, primeQ, result = row
+                currSemiPrime = FactorDB(result)
+                currSemiPrime.connect()
+                status = currSemiPrime.get_status()
+                if (status == 'C' or status == 'U'):
+                    string = f"{result}={primeP}*{primeQ}"
+                    self.reportResults(string)
+            except Exception as e:
+                print(f"Failed attempt {e}")
 
 
 
