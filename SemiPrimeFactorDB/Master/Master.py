@@ -71,7 +71,7 @@ class Master:
             try:
                 primeP, primeQ, result = row
                 string = f"{result}={primeP}*{primeQ}"
-                reportStatus = self.reportResults(string)
+                success = self.reportResults(string)
                 if success:
                     time.sleep(0.2)
                 else: 
