@@ -6,6 +6,8 @@ from contextlib import redirect_stdout
 from concurrent.futures import ThreadPoolExecutor
 from factordb.factordb import FactorDB
 from PrimeBatchGenerator import PrimeBatchGenerator
+from datetime import datetime
+import time
 class Master:
     def __init__(self, HostNames, digit, batchSize):
         self.HostNames = HostNames
@@ -75,6 +77,8 @@ class Master:
                 else: 
                     time.sleep(1)
             except Exception as e:
+                current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                print(current_time)
                 print(f"Failed attempt {e}")
 
 
