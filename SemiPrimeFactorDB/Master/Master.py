@@ -55,24 +55,25 @@ class Master:
         url = "https://factordb.com/report.php"
         payload = {'report': string}
         try:
-            response = requests.post(url, data=payload)
+            response = requests.post(url, data=payload, timeout=10)
             if response.status_code == 200:
                 self.resultCount = self.resultCount + 1
                 return True
         except Exception as e:
+            print(f"Error {e}")
             return False
+        return False
 
     def processResults(self,results):
         for row in results:
             try:
-                time.sleep(.5)
                 primeP, primeQ, result = row
-                currSemiPrime = FactorDB(result)
-                currSemiPrime.connect()
-                status = currSemiPrime.get_status()
-                if (status == 'C' or status == 'U'):
-                    string = f"{result}={primeP}*{primeQ}"
-                    self.reportResults(string)
+                string = f"{result}={primeP}*{primeQ}"
+                reportStatus = self.reportResults(string)
+                if success:
+                    time.sleep(0.2)
+                else: 
+                    time.sleep(1)
             except Exception as e:
                 print(f"Failed attempt {e}")
 

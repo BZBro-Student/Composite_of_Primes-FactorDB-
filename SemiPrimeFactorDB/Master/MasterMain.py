@@ -8,7 +8,7 @@ def main():
     master = Master(hostNames, digit, batchSize)
     count = 0
     try:
-        while 1:
+        while True:
             results = master.SendBatchMulti(hostNames)
             print(results)
             if results:
@@ -18,7 +18,7 @@ def main():
                     file.write(str(count))
             else:
                 continue
-        time.sleep(1)
+            time.sleep(.5)
     except KeyboardInterrupt:
         count = master.resultCount
         print("Count: " + str(count))
